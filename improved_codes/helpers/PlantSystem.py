@@ -1,4 +1,4 @@
-# Plant System
+# Plant system
 
 from Numbers import *
 import Extras
@@ -47,5 +47,13 @@ def plant_crop(plant_type, will_use_water=False, will_use_fertilizer=False):
 	
 	if FERTILIZER_AMOUNT > MAX_DRONES and IS_FERTILIZING:
 		Extras.use_fertilize()
+		
+def replant(plant_type):
+	harvest()
+	if Ground.get_groud() != SOILED_GROUND:
+		Ground.soil()
+	plant(plant_type)
+	if Extras.need_water():
+		Extras.use_water()
 		
 	

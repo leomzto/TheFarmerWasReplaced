@@ -1,5 +1,4 @@
 # Extras
-
 def get_pos():
 	return (get_pos_x(), get_pos_y())
 
@@ -9,7 +8,7 @@ def is_even(num):
 def is_odd(num):
 	return num % 2 != 0
 
-def need_water(limit=0.70):
+def need_water(limit=1):
 	return get_water() < limit
 
 def use_water():

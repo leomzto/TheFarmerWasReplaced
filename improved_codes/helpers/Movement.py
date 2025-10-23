@@ -2,6 +2,8 @@
 
 import Extras
 
+world_size = get_world_size()
+
 def move_to(x, y):
 	(curr_x, curr_y) = Extras.get_pos()
 	dx = x - curr_x
@@ -27,4 +29,10 @@ def go_home():
 		move(South)
 	for _ in range(curr_x):
 		move(West)
+		
+def can_drone_move():
+	if not can_move(North) and not can_move(South):
+		if not can_move(East) and not can_move(West):
+			return False
+	return True
 		

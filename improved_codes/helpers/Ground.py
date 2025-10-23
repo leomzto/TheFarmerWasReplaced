@@ -1,5 +1,4 @@
 # Ground 
-
 def get_groud():
 	return get_ground_type()
 

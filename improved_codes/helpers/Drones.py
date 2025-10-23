@@ -5,6 +5,8 @@ import Extras
 WORLD_SIZE = get_world_size()
 
 def send_home():
+	global WORLD_SIZE
+	
 	while get_pos_x() != 0:
 		x = get_pos_x()
 		if x > WORLD_SIZE // 2:
@@ -18,6 +20,32 @@ def send_home():
 			move(North)
 		else:
 			move(South)
+
+def send_to_center():
+	global WORLD_SIZE
+	
+	center = WORLD_SIZE // 2
+	
+	while True:
+		x, _ = Extras.get_pos()
+		
+		if x == center:
+			break
+		elif x > center:
+			move(West)
+		else:
+			move(East)
+	
+	while True:
+		_, y = Extras.get_pos()
+		
+		if y == center:
+			break
+		elif y > center:
+			move(South)
+		else:
+			move(North)
+
 			
 def move_drone(posX, posY):
 	global WORLD_SIZE

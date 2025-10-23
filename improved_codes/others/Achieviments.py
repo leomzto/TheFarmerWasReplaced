@@ -55,7 +55,7 @@ def giant_pumpkin():
 			make_the_pumpkin()				
 
 
-from Maze2 import *
+#from Maze2 import *
 def task_for_achi():
 	start = 0
 	end = 300
@@ -87,9 +87,57 @@ def recycling():
 				move(North)
 			else:
 				move(East)
-			
+				
+def stack_overflow():
+	return stack_overflow()
+	
+def fashion_show():
+	set_world_size(5)
+	
+	hat_list = [
+		Hats.Cactus_Hat,
+		Hats.Carrot_Hat,
+		Hats.Golden_Cactus_Hat,
+		Hats.Golden_Carrot_Hat,
+		Hats.The_Farmers_Remains
+	]
 
-#clear()
+	coords = [
+		(0, 0),
+		(0, 4),
+		(4, 0),
+		(4, 4),
+		(2, 2)
+	]
+
+	def make_drone_task(x_targ, y_targ, hat):
+		def drone_task():
+			while get_pos_x() != x_targ:
+				if get_pos_x() < x_targ:
+					move(East)
+				else:
+					move(West)
+			
+			while get_pos_y() != y_targ:
+				if get_pos_y() < y_targ:
+					move(North)
+				else:
+					move(South)
+			
+			change_hat(hat)
+			
+			while True:
+				wait_for(drone_task())
+		return drone_task
+
+	for i in range(len(hat_list)):
+		task = make_drone_task(coords[i][0], coords[i][1], hat_list[i])
+		spawn_drone(task)
+
+
+clear()
 #thousand_flips()
 #giant_pumpkin()
 #recycling()
+#stack_overflow()
+#fashion_show()
